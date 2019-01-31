@@ -1,0 +1,48 @@
+
+program test
+REAL DS,DL,TL,KERF,V
+call JCLARK(10.0,10.0,10.0,1,V)
+print *, 'vol ', V
+end
+
+SUBROUTINE JCLARK (DS,DL,TL,KERF,V)
+!
+V=0.0
+!
+IF(TL-4.0)10,1,1
+!
+1 IF(DL)3,3,2
+2 T=4.0*(DL-DS)/TL
+GO TO 4
+3 T=0.5
+!
+4 DO 5 I=1,20
+IF(TL-FLOAT(4*I))6,5,5
+5 CONTINUE
+6 L=I-1
+SL=FLOAT(4*L)
+!
+write (*,*) 'SL :', SL, " L is", L
+D=DS+(T/4.0)*(TL-SL)
+!
+DO 7 I=1,4
+XI=FLOAT(I)
+IF(SL-TL+XI)7,7,8
+7 CONTINUE
+!
+
+8 write (*,*) 'SL :', SL, ' XI:',XI, ' D:', D
+XL=XI-1.0
+DEX=DS+(T/4.0)*(TL-SL-XL)
+VADD=0.055*XL*DEX*DEX-0.1775*XL*DEX
+!
+DO 9 I=1,L
+DC=D+T*FLOAT(I-1)
+9 V=V+0.22*DC*DC-0.71*DC
+V=V+VADD
+!
+IF (KERF)10,10,11
+10 RETURN
+11 V=0.905*V
+RETURN
+END
