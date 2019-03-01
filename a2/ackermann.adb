@@ -36,14 +36,14 @@ begin
   end if;
 
   if Is_Numeric(Argument(1)) = false then
-    put_line("invalid first parameter, must be numeric");
+    put_line("invalid first parameter, must be integer");
     validEntry := false;
   else
   m := Integer'Value(Argument(1));
   end if;
 
   if Is_Numeric(Argument(2)) = false then
-    put_line("invalid second parameter, must be numeric");
+    put_line("invalid second parameter, must be integer");
     validEntry := false;
   else
   n := Integer'Value(Argument(2));
