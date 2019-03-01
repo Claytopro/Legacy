@@ -6,7 +6,7 @@
 
 with ada.Text_IO; use Ada.Text_IO;
 package body stackADT is
-  type list is array(1..1000) of integer;
+  type list is array(1..10000000) of integer;
   type int_stack is
       record
         item : list;
@@ -19,7 +19,7 @@ package body stackADT is
   sGoto : int_stack;
   procedure push(x : in integer; y: in integer; z : in integer) is
   begin
-    if sMvalue.top = 1000 then
+    if sMvalue.top = 10000000 then
       put_line("stack is full");
     else
       sMvalue.top := sMvalue.top +1;

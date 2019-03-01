@@ -5,25 +5,31 @@ A -Wall
 P SS ZX
 
 RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_FIXED_POINT
 RV NO_IO
 RV NO_SECONDARY_STACK
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U ackermann%b		ackermann.adb		a948ac08 NE OO SU IL
+U ackermann%b		ackermann.adb		3c1f8869 NE OO SU IL
 W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
 W ada.command_line%s	a-comlin.adb		a-comlin.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W numeric_tests%s	numeric_tests.adb	numeric_tests.ali
 W stackadt%s		stackadt.adb		stackadt.ali
 W system.concat_2%s	s-conca2.adb		s-conca2.ali
-W system.concat_4%s	s-conca4.adb		s-conca4.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.img_lld%s	s-imglld.adb		s-imglld.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W system.val_int%s	s-valint.adb		s-valint.ali
 
-D ackermann.adb		20190301033835 217ceae5 ackermann%b
+D ackermann.adb		20190301135519 9974cf50 ackermann%b
 D ada.ads		20170106103348 76789da1 ada%s
+D a-calend.ads		20160420090448 2d5f01d4 ada.calendar%s
 D a-comlin.ads		20140225151544 ea62afbc ada.command_line%s
 D a-except.ads		20151016123252 291912d5 ada.exceptions%s
 D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
@@ -37,11 +43,12 @@ D numeric_tests.ads	20190301033812 5c9652fb numeric_tests%s
 D stackadt.ads		20190301014941 06ad4e7e stackadt%s
 D system.ads		20170510173650 4635ec04 system%s
 D s-conca2.ads		20140225151544 02a0d7d0 system.concat_2%s
-D s-conca4.ads		20140225151544 7e642b20 system.concat_4%s
+D s-conca3.ads		20140225151544 0b705ca5 system.concat_3%s
 D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
 D s-exctab.ads		20140225151139 54135002 system.exception_table%s
 D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
 D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
+D s-imglld.ads		20090409150019 f3220969 system.img_lld%s
 D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
 D s-secsta.ads		20170112134946 9751b57e system.secondary_stack%s
 D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
@@ -53,30 +60,39 @@ D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
 D s-valint.ads		20090409150019 48a52a3f system.val_int%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
 X 1 ackermann.adb
-15U11*ackermann 15b11 89l5 89t14
-17b5 validEntry{boolean} 23m3 27m5 32m5 39m5 44r6
-18i5 n{integer} 41m3 48r10 51m11 52r60 55r14 56r20 58m13 60r20 61m13 61r16
-. 64r16 67r16 69m9 71r14 72r20 74m13 76r20 77m13 77r16 80r16
-19i5 m{integer} 34m3 48r8 51m9 52r42 54r15 56r18 57m13 57r18 60r18 67r14
-. 68m9 68r14 70r15 72r18 73m13 73r18 76r18
-20i5 gotoInt{integer} 47m3 48r12 51m13 52r79 53r8 66r13
-21i5 ack{integer} 46m3 64m9 69r13 80m9 84r41
+16U11*ackermann 16b11 105l5 105t14
+18b5 validEntry{boolean} 31m3 35m5 40m5 47m5 53r6
+21i5 n{integer} 49m3 59r10 63m11 67r14 68r20 70m13 72r20 73m13 73r16 76r16
+. 79r16 81m9 83r14 84r20 86m13 88r20 89m13 89r16 92r16
+22i5 m{integer} 42m3 59r8 63m9 66r15 68r18 69m13 69r18 72r18 79r14 80m9 80r14
+. 82r15 84r18 85m13 85r18 88r18
+24i5 gotoInt{integer} 56m3 59r12 63m13 65r8 78r13
+26i5 ack{integer} 55m3 76m9 81r13 92m9 99r41
+28i5 startTime{3|44I9} 57m3 97r29
+28i16 endTime{3|44I9} 96m3 97r19
+29o5 timeElapsed{duration} 97m3 100r43
 X 2 ada.ads
-16K9*Ada 1|10r6 10r23 12r6 12r28 2|20e8
-X 3 a-comlin.ads
-38K13*Command_Line 1|12w10 12r32 3|139e21
-41V13*Argument_Count{natural} 1|25s6
-48V13*Argument{string} 1|30s17 34s22 37s17 41s22
-X 8 a-textio.ads
-49K13*Text_IO 1|10w10 10r27 8|471e16
-263U14*Put_Line 1|26s5 31s5 38s5 52s5 84s3 86s3
-X 12 numeric_tests.ads
-5K9*Numeric_Tests 1|13w6 13r25 12|7e18
-6V13*Is_Numeric{boolean} 1|30s6 37s6
-X 13 stackadt.ads
-7K9*stackADT 1|11w6 11r20 13|14e13
-9U13*push 1|48s3 56s13 60s13 67s9 72s13 76s13
-10U13*pop 1|51s5
-11V12*isEmpty{boolean} 1|50s9
-12U13*clear 1|45s3
+16K9*Ada 1|10r6 10r23 12r6 12r28 14r6 14r24 2|20e8
+X 3 a-calend.ads
+36K13*Calendar 1|14w10 14r28 3|395e17
+44I9*Time<213I9> 1|28r26
+58V13*Clock{44I9} 1|57s16 96s14
+105V14*"-"{duration} 1|97s27
+213I9 Time_Rep<long_long_integer>
+X 4 a-comlin.ads
+38K13*Command_Line 1|12w10 12r32 4|139e21
+41V13*Argument_Count{natural} 1|33s6
+48V13*Argument{string} 1|38s17 42s22 45s17 49s22
+X 9 a-textio.ads
+49K13*Text_IO 1|10w10 10r27 9|471e16
+263U14*Put_Line 1|34s5 39s5 46s5 99s3 100s3 102s3
+X 13 numeric_tests.ads
+5K9*Numeric_Tests 1|13w6 13r25 13|7e18
+6V13*Is_Numeric{boolean} 1|38s6 45s6
+X 14 stackadt.ads
+7K9*stackADT 1|11w6 11r20 14|14e13
+9U13*push 1|59s3 68s13 72s13 79s9 84s13 88s13
+10U13*pop 1|63s5
+11V12*isEmpty{boolean} 1|61s9
+12U13*clear 1|54s3
 
