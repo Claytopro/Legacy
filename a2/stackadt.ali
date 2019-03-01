@@ -1,0 +1,69 @@
+V "GNAT Lib v7"
+A -gnatwa
+A -Wall
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U stackadt%b		stackadt.adb		71a63ff3 OO PK IL
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U stackadt%s		stackadt.ads		06ad4e7e EE NE OO PK IL
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D stackadt.ads		20190301014941 06ad4e7e stackadt%s
+D stackadt.adb		20190301014825 4f668459 stackadt%b
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 11|7r6 7r23
+X 6 a-textio.ads
+49K13*Text_IO 471e16 11|7w10 7r27
+263U14*Put_Line 11|23s7 39s7
+X 10 stackadt.ads
+7K9*stackADT 14l5 14e13 11|8b14 64l5 64t13
+9U13*push 9>19 9>34 9>50 11|20b13 34l7 34t11
+9i19 x{integer} 11|20b18 26r36
+9i34 y{integer} 11|20b34 29r36
+9i50 z{integer} 11|20b49 32r32
+10U13*pop 10<18 10<34 10<50 11|36b13 50l7 50t10
+10i18 x{integer} 11|36b18 41m7
+10i34 y{integer} 11|36b34 44m7
+10i50 z{integer} 11|36b51 47m7
+11V12*isEmpty{boolean} 11|52b12 55l7 55t14
+12U13*clear 11|57b13 61l7 61t12
+X 11 stackadt.adb
+9A8 list(integer)<integer> 12r16
+10R8 int_stack 14e17 16r13 17r13 19r11
+12a9*item{9A8} 26m15 29m15 32m13 41r20 44r20 47r18
+13i9*top{natural} 22r16 25m15 25r30 26r28 28m15 28r30 29r28 31m13 31r26 32r24
+. 38r16 41r33 42m15 42r30 44r33 45m15 45r30 47r29 48m13 48r26 54r20 59m13
+. 60m13
+16r3 sNvalue{10R8} 28m7 28r22 29m7 29r20 44r12 44r25 45m7 45r22 60m5
+17r3 sMvalue{10R8} 22r8 25m7 25r22 26m7 26r20 38r8 41r12 41r25 42m7 42r22
+. 54r12 59m5
+19r3 sGoto{10R8} 31m7 31r20 32m7 32r18 47r12 47r23 48m7 48r20
+

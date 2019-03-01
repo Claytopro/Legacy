@@ -1,0 +1,76 @@
+V "GNAT Lib v7"
+M P W=b
+A -gnatwa
+A -Wall
+P SS ZX
+
+RN
+RV NO_IO
+RV NO_SECONDARY_STACK
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U ackermann%b		ackermann.adb		5d79c0c2 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W stackadt%s		stackadt.adb		stackadt.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.concat_4%s	s-conca4.adb		s-conca4.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
+
+D ackermann.adb		20190301031509 89dbd4d4 ackermann%b
+D ada.ads		20170106103348 76789da1 ada%s
+D a-comlin.ads		20140225151544 ea62afbc ada.command_line%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D stackadt.ads		20190301014941 06ad4e7e stackadt%s
+D system.ads		20170510173650 4635ec04 system%s
+D s-conca2.ads		20140225151544 02a0d7d0 system.concat_2%s
+D s-conca4.ads		20140225151544 7e642b20 system.concat_4%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-secsta.ads		20170112134946 9751b57e system.secondary_stack%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-valint.ads		20090409150019 48a52a3f system.val_int%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ackermann.adb
+14U11*ackermann 14b11 71l5 71t14
+16i5 n{integer} 27m3 32r10 35m11 36r60 39r14 40r20 42m13 44r20 45m13 45r16
+. 48r16 51r16 53m9 55r14 56r20 58m13 60r20 61m13 61r16 64r16
+17i5 m{integer} 26m3 32r8 35m9 36r42 38r15 40r18 41m13 41r18 44r18 51r14
+. 52m9 52r14 54r15 56r18 57m13 57r18 60r18
+18i5 gotoInt{integer} 31m3 32r12 35m13 36r79 37r8 50r13
+19i5 ack{integer} 30m3 48m9 53r13 64m9 70r41
+X 2 ada.ads
+16K9*Ada 1|10r6 10r23 12r6 12r28 2|20e8
+X 3 a-comlin.ads
+38K13*Command_Line 1|12w10 12r32 3|139e21
+41V13*Argument_Count{natural} 1|22s6
+48V13*Argument{string} 1|26s22 27s22
+X 8 a-textio.ads
+49K13*Text_IO 1|10w10 10r27 8|471e16
+263U14*Put_Line 1|23s5 36s5 70s3
+X 12 stackadt.ads
+7K9*stackADT 1|11w6 11r20 12|14e13
+9U13*push 1|32s3 40s13 44s13 51s9 56s13 60s13
+10U13*pop 1|35s5
+11V12*isEmpty{boolean} 1|34s9
+12U13*clear 1|29s3
+
