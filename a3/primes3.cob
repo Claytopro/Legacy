@@ -47,50 +47,66 @@ WORKING-STORAGE SECTION.
 02 OUT-N PICTURE Z(8)9.
 02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
 
-PROCEDURE DIVISION.
-OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
-WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
-WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
+77 INPUT-VAR PICTURE 9(09) VALUE 1.
+
+01 LOOP-BOOL PICTURE X(1) Value 'N'.
+  88 TRUE-BOOL value 'Y'.
+  88 FALSE-BOOL Value 'N'.
 
 
-1. READ INPUT-FILE INTO IN-CARD AT END GO TO 8.
-MOVE IN-N TO N.
-display N.
-IF N IS GREATER THAN 1 GO TO B1.
-MOVE IN-N TO OUT-N.
-WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE.
-GO TO 1.
 
 
-B1. IF N IS LESS THAN 4 GO TO 3.
-MOVE 2 TO R.
-display 'is is ' i
-display 'r is ' r
+  PROCEDURE DIVISION.
+  OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
+  WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
+  WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
 
-2. DIVIDE R INTO N GIVING I.
-MULTIPLY R BY I.
-IF I IS NOT EQUAL TO N GO TO B2.
-MOVE IN-N TO OUT-N-2.
-WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE.
-GO TO 1.
+  *> itterate through file until end, then set indicator to true to end statement
+  PERFORM UNTIL INPUT-VAR EQUAL 0
 
-B2. ADD 1 TO R.
-IF R IS LESS THAN N GO TO 2.
+    display 'FIND OUT IF NUMBER IS PRIME (ENTER 0 to exit)'
+    ACCEPT INPUT-VAR FROM CONSOLE
+    END-ACCEPT
 
-3. MOVE IN-N TO OUT-N-3.
-WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
-GO TO 1.
+    display 'input:' INPUT-var
 
-8.
-PERFORM test-function.
-FINISH.
+    MOVE INPUT-var TO N
+    move 0 to i
 
-CLOSE INPUT-FILE, OUTPUT-FILE.
-STOP RUN.
+    IF N IS GREATER THAN 1
 
-test-function.
-PERFORM
-display "test workds"
-display "test workds"
-display "test workds"
-END-PERFORM.
+      IF N IS LESS THAN 4
+        display input-var ' is prime'
+      ELSE
+        MOVE 2 TO R
+
+        *>loop through until two possible endings occur
+        PERFORM UNTIL TRUE-BOOL
+
+          DIVIDE R INTO N GIVING I
+          MULTIPLY R BY I
+
+          IF I IS NOT EQUAL TO N
+            ADD 1 TO R
+            IF R IS LESS THAN N *> cant be N is greater than or equal to R to remove continue for some reason
+              continue
+            ELSE
+              MOVE 'Y' to LOOP-BOOL
+              display input-VAR ' is a prime number'
+            END-IF
+          ELSE
+            MOVE 'Y' to LOOP-BOOL
+            display input-VAR ' is NOT a prime number'
+          END-IF
+        END-PERFORM
+        *>reset loop boolean
+        MOVE 'N' to LOOP-BOOL
+        END-IF
+    ELSE
+        display 'PROGRAM EXITING'
+    END-IF
+  END-PERFORM.
+
+
+  CLOSE INPUT-FILE, OUTPUT-FILE.
+  STOP RUN.

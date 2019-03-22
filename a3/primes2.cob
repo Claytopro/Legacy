@@ -49,8 +49,7 @@ WORKING-STORAGE SECTION.
 01 EOF PICTURE X(01) Value 'N'.
   88 EOF-BOOL value 'Y'.
   88 NOT-EOF-BOOL Value 'N'.
-
-01 LOOP-BOOL PICTURE X(01) Value 'N'.
+01 LOOP-BOOL PICTURE X(1) Value 'N'.
   88 TRUE-BOOL value 'Y'.
   88 FALSE-BOOL Value 'N'.
 
@@ -78,51 +77,38 @@ NOT AT END
     ELSE
       MOVE 2 TO R
 
-
+      *>loop through until two possible endings occur
       PERFORM UNTIL TRUE-BOOL
 
         DIVIDE R INTO N GIVING I
-        display 'i is ' i
-        display 'r is ' r
         MULTIPLY R BY I
-        display 'i is ' i
-        display 'r is ' r
 
         IF I IS NOT EQUAL TO N
           ADD 1 TO R
-          IF N IS GREATER THAN OR EQUAL TO R
+          IF R IS LESS THAN N *> cant be N is greater than or equal to R to remove continue for some reason
+            continue
+          ELSE
             MOVE 'Y' to LOOP-BOOL
             MOVE IN-N TO OUT-N-3
             WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
           END-IF
-          
         ELSE
           MOVE 'Y' to LOOP-BOOL
           MOVE IN-N TO OUT-N-2
           WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
         END-IF
-
       END-PERFORM
       *>reset loop boolean
       MOVE 'N' to LOOP-BOOL
-
       END-IF
-
   ELSE
     MOVE IN-N TO OUT-N
     WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
-  end-if
-
+  END-IF
 
 END-PERFORM.
 
-
+display 'Results output to output.dat'
 
 CLOSE INPUT-FILE, OUTPUT-FILE.
 STOP RUN.
-
-test-function.
-PERFORM
-display "test workds"
-
-END-PERFORM.
