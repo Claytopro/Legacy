@@ -3,9 +3,9 @@
 
 package body Numeric_Tests is
    function Is_Numeric (Item : in String) return Boolean is
-      Dummy : Float;
+      Dummy : integer;
    begin
-      Dummy := Float'Value (Item);
+      Dummy := Integer'Value (Item);
       return True;
    exception
       when others =>

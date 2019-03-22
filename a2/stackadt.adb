@@ -17,6 +17,8 @@ package body stackADT is
   sMvalue : int_stack;
 -- deals with switch statement of ackerman function
   sGoto : int_stack;
+
+--ads value to list and increaments top of stack counter for all three stacks
   procedure push(x : in integer; y: in integer; z : in integer) is
   begin
     if sMvalue.top = 10000000 then
@@ -33,6 +35,7 @@ package body stackADT is
     end if;
   end push;
 
+--gets value at top of stack then decrements count of stack point
   procedure pop( x : out integer;y : out integer; z : out integer) is
   begin
     if sMvalue.top = 0 then
@@ -49,11 +52,13 @@ package body stackADT is
     end if;
   end pop;
 
+--checks if stack is empty by checking if top is pointing to zero element
   function isEmpty return Boolean is
   begin
     return sMvalue.top = 0;
   end isEmpty;
 
+--sets stack pointer to zero so any new pushes will overwrite old stored data
   procedure clear is
   begin
     sMvalue.top := 0;
