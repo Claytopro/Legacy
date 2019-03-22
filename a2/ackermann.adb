@@ -18,8 +18,8 @@ procedure ackermann is
     validEntry : Boolean;
   -- values taken from Command line and used to calculate ackermann function
   -- ACKERMANN(M,N)
-    n : integer;
     m : integer;
+    n : integer;
   -- used to hold value of where to go to at top of calculating loop
     gotoInt : integer;
   --holds final value
@@ -97,7 +97,7 @@ begin
 
     end if;
   end loop;
-  
+
   endTime := Clock;
   timeElapsed := (endTime - startTime) *1000;
 
