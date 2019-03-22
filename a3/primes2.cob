@@ -22,9 +22,11 @@ fd OUTPUT-FILE.
 
 
 WORKING-STORAGE SECTION.
+*>variables used for computing if number is prime
 77 N PICTURE S9(9).
 77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
 77 I PICTURE S9(9) USAGE IS COMPUTATIONAL.
+
 01 IN-CARD.
 02 IN-N PICTURE 9(9).
 02 FILLER PICTURE X(71).
@@ -46,9 +48,11 @@ WORKING-STORAGE SECTION.
 02 FILLER PICTURE X VALUE SPACE.
 02 OUT-N PICTURE Z(8)9.
 02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
+*>used to check when end of file has been reached
 01 EOF PICTURE X(01) Value 'N'.
   88 EOF-BOOL value 'Y'.
   88 NOT-EOF-BOOL Value 'N'.
+*>used to determine when inner loop
 01 LOOP-BOOL PICTURE X(1) Value 'N'.
   88 TRUE-BOOL value 'Y'.
   88 FALSE-BOOL Value 'N'.
@@ -69,9 +73,8 @@ NOT AT END
   display N
   move 0 to i
 
-  IF N IS GREATER THAN 1
-
-    IF N IS LESS THAN 4
+  IF N > 1
+    IF N < 4
       MOVE IN-N TO OUT-N-3
       WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
     ELSE
@@ -80,19 +83,21 @@ NOT AT END
       *>loop through until two possible endings occur
       PERFORM UNTIL TRUE-BOOL
 
-        DIVIDE R INTO N GIVING I
-        MULTIPLY R BY I
+        compute I = N/R
+        compute I = R*I
 
-        IF I IS NOT EQUAL TO N
+        IF I NOT = N
+          *> wont compile with compute r =r +1
           ADD 1 TO R
-          IF R IS LESS THAN N *> cant be N is greater than or equal to R to remove continue for some reason
-            continue
-          ELSE
+      
+          *>if R us greater than or equal to N then we know N is not a prime and we can add to FILE
+          IF NOT R < N
             MOVE 'Y' to LOOP-BOOL
             MOVE IN-N TO OUT-N-3
             WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
           END-IF
         ELSE
+          *>if we get to a value where I i equal to N then we know it is prime and can write it to file and end loop
           MOVE 'Y' to LOOP-BOOL
           MOVE IN-N TO OUT-N-2
           WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
