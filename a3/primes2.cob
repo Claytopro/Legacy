@@ -5,7 +5,8 @@ environment division.
 input-output section.
 file-control.
 select input-file assign to "primes.dat"
-  organization is line sequential.
+  organization is line sequential
+  FILE STATUS file-stat.
 
 select output-file assign to "output.dat"
   organization is line sequential.
@@ -56,17 +57,30 @@ working-storage section.
 01 loop-bool picture x(1) value 'n'.
   88 true-bool value 'y'.
   88 false-bool value 'n'.
+01  FILE-STAT  PIC XX.
 
 
 procedure division.
-open input input-file, output output-file.
-write out-line from title-line after advancing 0 lines.
-write out-line from under-line after advancing 1 line.
+
+
+open input input-file
+IF FILE-STAT = "35"
+  display 'INPUT FILE DOES NOT EXIST'
+  move 'y' to eof
+  close input-file
+else
+  open output output-file
+  *> write out header to outputfile
+  write out-line from title-line after advancing 0 lines
+  write out-line from under-line after advancing 1 line
+end-if
 
 *> itterate through file until end, then set indicator to true to end statement
 perform until eof-bool
 read input-file into in-card
-  at end move 'y' to eof
+at end
+  close input-file, output-file
+  move 'y' to eof
 not at end
   *>read in number
   move in-n to n
@@ -89,7 +103,7 @@ not at end
         if i not = n
           *> wont compile with compute r =r +1
           add 1 to r
-          display 'this wont compile'
+
 
           *>if r us greater than or equal to n then we know n is not a prime and we can add to file
           if not r < n
@@ -116,5 +130,4 @@ end-perform.
 
 display 'results output to output.dat'
 
-close input-file, output-file.
 stop run.

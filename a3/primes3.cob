@@ -146,7 +146,7 @@ working-storage section.
 
 *>continue to accept input until user enters a zero. numbers are unsigned
   perform until input-var equal 0
-    display 'find out if number is prime (enter 0 to exit)'
+    display 'find out if another number is prime (enter 0 to exit)'
     accept input-var from console
     end-accept
 
