@@ -4,75 +4,75 @@ program-id. prime1.
 environment division.
 input-output section.
 file-control.
-select INPUT-FILE assign to "primes.dat"
+select input-file assign to "primes.dat"
   organization is line sequential.
 
-select OUTPUT-FILE assign to "output.dat"
+select output-file assign to "output.dat"
   organization is line sequential.
 
 data division.
 file section.
-fd INPUT-FILE.
+fd input-file.
 01 input-record.
- 05 num pic X(100).
+ 05 num pic x(100).
 
-fd OUTPUT-FILE.
-01 OUT-LINE.
- 05 info pic X(100).
+fd output-file.
+01 out-line.
+ 05 info pic x(100).
 
 
-WORKING-STORAGE SECTION.
-77 N PICTURE S9(9).
-77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
-77 I PICTURE S9(9) USAGE IS COMPUTATIONAL.
-01 IN-CARD.
-02 IN-N PICTURE 9(9).
-02 FILLER PICTURE X(71).
-01 TITLE-LINE.
-02 FILLER PICTURE X(6) VALUE SPACES.
-02 FILLER PICTURE X(20) VALUE 'PRIME NUMBER RESULTS'.
-01 UNDER-LINE.
-02 FILLER PICTURE X(32) VALUE
+working-storage section.
+77 n picture s9(9).
+77 r picture s9(9) usage is computational.
+77 i picture s9(9) usage is computational.
+01 in-card.
+02 in-n picture 9(9).
+02 filler picture x(71).
+01 title-line.
+02 filler picture x(6) value spaces.
+02 filler picture x(20) value 'prime number results'.
+01 under-line.
+02 filler picture x(32) value
 ' -------------------------------'.
-01 NOT-A-PRIME-LINE.
-02 FILLER PICTURE X VALUE SPACE.
-02 OUT-N-2 PICTURE Z(8)9.
-02 FILLER PICTURE X(15) VALUE ' IS NOT A PRIME'.
-01 PRIME-LINE.
-02 FILLER PICTURE X VALUE SPACE.
-02 OUT-N-3 PICTURE Z(8)9.
-02 FILLER PICTURE X(11) VALUE ' IS A PRIME'.
-01 ERROR-MESS.
-02 FILLER PICTURE X VALUE SPACE.
-02 OUT-N PICTURE Z(8)9.
-02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
+01 not-a-prime-line.
+02 filler picture x value space.
+02 out-n-2 picture z(8)9.
+02 filler picture x(15) value ' is not a prime'.
+01 prime-line.
+02 filler picture x value space.
+02 out-n-3 picture z(8)9.
+02 filler picture x(11) value ' is a prime'.
+01 error-mess.
+02 filler picture x value space.
+02 out-n picture z(8)9.
+02 filler picture x(14) value ' illegal input'.
 
-PROCEDURE DIVISION.
-OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
-WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
-WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
-1. READ INPUT-FILE INTO IN-CARD AT END GO TO FINISH.
-MOVE IN-N TO N.
-display N.
-IF N IS GREATER THAN 1 GO TO B1.
-MOVE IN-N TO OUT-N.
-WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE.
-GO TO 1.
-B1. IF N IS LESS THAN 4 GO TO 3.
-MOVE 2 TO R.
-2.DIVIDE R INTO N GIVING I.
-MULTIPLY R BY I.
-IF I IS NOT EQUAL TO N GO TO B2.
-MOVE IN-N TO OUT-N-2.
-WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE.
-GO TO 1.
-B2. ADD 1 TO R.
-IF R IS LESS THAN N GO TO 2.
-3. MOVE IN-N TO OUT-N-3.
-WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
-GO TO 1.
-FINISH.
-display 'Results output to output.dat'
+procedure division.
+open input input-file, output output-file.
+write out-line from title-line after advancing 0 lines.
+write out-line from under-line after advancing 1 line.
+1. read input-file into in-card at end go to finish.
+move in-n to n.
+display n.
+if n is greater than 1 go to b1.
+move in-n to out-n.
+write out-line from error-mess after advancing 1 line.
+go to 1.
+b1. if n is less than 4 go to 3.
+move 2 to r.
+2.divide r into n giving i.
+multiply r by i.
+if i is not equal to n go to b2.
+move in-n to out-n-2.
+write out-line from not-a-prime-line after advancing 1 line.
+go to 1.
+b2. add 1 to r.
+if r is less than n go to 2.
+3. move in-n to out-n-3.
+write out-line from prime-line after advancing 1 line.
+go to 1.
+finish.
+display 'results output to output.dat'
 
-CLOSE INPUT-FILE, OUTPUT-FILE.
-STOP RUN.
+close input-file, output-file.
+stop run.
