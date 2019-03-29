@@ -1,0 +1,68 @@
+V "GNAT Lib v7"
+M P W=b
+A -gnatwa
+A -Wall
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U spigot%b		spigot.adb		d4e587c8 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.elementary_functions%s  a-nuelfu.ads  a-nuelfu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20080324174807 bb51c45a ada.numerics%s
+D a-nuelfu.ads		20070406091342 03e83d1c ada.numerics.elementary_functions%s
+D a-ngelfu.ads		20151016131424 b8fdcb46 ada.numerics.generic_elementary_functions%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D spigot.adb		20190329023738 ef604f00 spigot%b
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 13|6r6 6r23 8r6 8r45
+X 4 a-numeri.ads
+16K13*Numerics 32e17 13|8r10 8r49
+X 5 a-nuelfu.ads
+18K22*Elementary_Functions[6|39] 13|8w19 8r58
+X 9 a-textio.ads
+49K13*Text_IO 471e16 13|6w10 6r27
+X 13 spigot.adb
+10U11*spigot 10b11 44l5 44t11
+11N5 n 16r12 28r18
+12i5 nines{integer} 24m6
+12i11 predigit{integer} 25m6
+12i20 i{integer}
+12i22 j{integer}
+12i24 k{integer}
+12i26 q{integer} 29m9 32r39 34m11 37r24 38m9 38r12
+12i28 x{integer} 32m11 33r27 34r16
+12i30 len{integer} 16m3 19r22 21r18 31r29
+13A10 newArray(float)<integer> 19r10
+19a6 a{13A10} 22m8 32r29 33m11 37m9
+21i10 j{integer} 22r10
+28i10 j{integer}
+31i13 i{integer} 32r31 32r41 33r13 33r36 34r21
+
