@@ -5,11 +5,11 @@
 
 with ada.Text_IO; use Ada.Text_IO;
 
-with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
+with Ada.Integer_Text_IO;           use Ada.Integer_Text_IO;
 
 procedure spigot is
     n:constant := 1000;
-    nines,predigit,i,j,k,q,x,len : integer;
+    nines,predigit,q,x,len : integer;
     type newArray is array(Integer range <>) of Float;
 
 begin
@@ -38,15 +38,30 @@ begin
         q:=q/10;
 
         if q = 9 then
-          nines++;
+          nines := nines + 1;
         elsif q = 10 then
 
+          Put     (predigit+1, Width => 0);
+          for k in 0..nines-1 loop
+            put('0');
+          end loop;
+          predigit := 0;
+          nines := 0;
         else
 
+          Put(predigit, Width => 0);
+          predigit := q;
+          if nines /= 0 then
+            for k in 0..nines-1 loop
+              put('9');
+            end loop;
+            nines := 0;
+          end if;
         end if;
 
      end loop;
-
    end;
 
+  Put     (predigit, Width => 0);
+  put_line("");
 end spigot;
