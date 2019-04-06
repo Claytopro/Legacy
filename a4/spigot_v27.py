@@ -18,6 +18,11 @@ for j in range(0,len):
 nines =0
 predigit =0
 
+#gwt user input
+filename = raw_input("Enter filename ")
+type(filename)
+output = open(filename, "w")
+
 for j in range(0,n+1):
     q = 0
 
@@ -30,22 +35,23 @@ for j in range(0,n+1):
     a[0] = q % 10
     q = q/10
 
+#determin digit to print to file
     if q == 9:
         nines += 1
     elif q == 10:
-        sys.stdout.write(str(predigit+1))
+        output.write(str(predigit+1))
 
         for k in range(0,nines):
-            sys.stdout.write('0')
+            output.write('0')
 
         predigit = 0
         nines = 0
     else:
-        sys.stdout.write(str(predigit))
+        output.write(str(predigit))
         predigit = q
         if nines != 0:
             for k in range(0,nines):
-                sys.stdout.write('9')
+                output.write('9')
             nines = 0
-
-print predigit
+#print last digit
+output.write(str(predigit))

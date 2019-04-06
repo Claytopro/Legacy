@@ -10,6 +10,13 @@ integer,parameter :: len =3334
 real :: a(3334)
 
 integer :: nines,predigit,i,j,k,q,x
+character (len = 1024) filename
+
+
+write(*,*)'Enter Filename:'
+READ *,filename
+
+ open(1, file = filename, status='new')
 
 do j = 1,len
   a(j) = 2.0;
@@ -40,24 +47,24 @@ do j = 1 , n+1
   if ( q == 9 ) then
     nines = nines + 1
   else if ( q == 10) then
-  write(6,fmt='(i1)',advance='no') predigit+1
+  write(1,fmt='(i1)',advance='no') predigit+1
     do k = 1,nines
-    write(6,fmt='(i1)',advance='no') 0
+    write(1,fmt='(i1)',advance='no') 0
     end do
     predigit = 0
     nines = 0
   else
-      write(6,fmt='(i1)',advance='no') predigit
+      write(1,fmt='(i1)',advance='no') predigit
       predigit = q
       if(nines /= 0) then
         do k = 1,nines
-            write(6,fmt='(i1)',advance='no') 9
+            write(1,fmt='(i1)',advance='no') 9
         end do
         nines = 0
       end if
   end if
 end do
 
-write(6,fmt='(i1)',advance='yes') predigit
+write(1,fmt='(i1)',advance='yes') predigit
 
 end program spigot
